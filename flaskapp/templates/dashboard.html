@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Ripened Tomatoes</title>
+</head>
+<body>
+    <div class="container">
+        <h1>All Shows</h1>
+        <table class="col-md-9">
+            <thead>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Release Date</th>
+                <th>User ID:</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {% for show in shows%}
+                <tr>
+                    <td>{{show.title}}</td>
+                    <td>{{show.description}}</td>
+                    <td>{{show.release_date}}</td>
+                    <td>{{show.users_id}}</td>
+                    {% if show.users_id == session.user_id%}
+                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/show/add_show">Add a show!</a>
+        <a href="/logout">Logout</a>
+    </div>
+    
+</body>
+</html>
