@@ -16,24 +16,26 @@
                 <th>Description</th>
                 <th>Release Date</th>
                 <th>User ID:</th>
+                <th>Creator</th>
                 <th>Action</th>
             </thead>
             <tbody>
                 {% for show in shows%}
                 <tr>
-                    <td>{{show.title}}</td>
+                    <td><a href="/show/{{show.id}}">{{show.title}}</a></td>
                     <td>{{show.description}}</td>
                     <td>{{show.release_date}}</td>
                     <td>{{show.users_id}}</td>
+                    <td>{{show.creator.full_name()}}</td>
                     {% if show.users_id == session.user_id%}
-                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                    <td><a href="/show/{{show.id}}/edit">Edit</a> | <a href="/show/{{show.id}}/delete">Delete</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/show/add_show">Add a show!</a>
-        <a href="/logout">Logout</a>
+        <a href="/show/add_show" class="btn btn-primary" role="button">Add a show!</a>
+        <a href="/logout" class="btn btn-danger" role="button">Logout</a>
     </div>
     
 </body>

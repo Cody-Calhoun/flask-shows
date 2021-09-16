@@ -43,11 +43,6 @@ def login_user():
     print("Successful login")
     return redirect('/dashboard')
 
-# @app.route('/user/success')
-# def success():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     return render_template('success.html')
 
 @app.route('/logout')
 def logout():

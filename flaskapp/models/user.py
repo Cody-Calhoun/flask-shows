@@ -15,6 +15,9 @@ class User():
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+    def full_name(self):
+        return f"{self.first_name} {self.last_name[0]}"
+
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
@@ -65,3 +68,5 @@ class User():
         if len(results) < 1:
             return False
         return cls(results[0])
+
+    
